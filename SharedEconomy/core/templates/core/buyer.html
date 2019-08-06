@@ -1,0 +1,131 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Buyer {% endblock %}
+
+{% block content %}
+<button class="btn btn-danger"onclick="confirmDelete()">Delete Buyer</button>
+ 
+<div class="homepage-info-section intro">
+  <div class="container">
+     <div class="alert alert-success" style="display: none">
+         
+        </div>
+    <div class="team-heading">
+      <h3>LATEST ARRIVALS</h3>
+    </div>
+
+    <div class="row">
+      {% for product in products %}
+      <div class="col-xl-3 col-md-6 col-sm-12 d-flex align-items-stretch hell">
+
+        <div class="card card-team one">
+          <div class="card-content-team">
+            <div class="card-img-div">
+              <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image" style="width:100%">
+            </div>
+            <div class="card-body">
+              <a href="#" class=""><h4 class="card-title">{{product.name}}</h4></a>
+              <h4 class="card-subtitle">{{product.location.name}}</h4>
+              <p class="card-text">&#x20B9;{{product.price}}<br></p>
+<!--               <form>
+                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                <input type="number" id="{{product.id}}" name="quantity" value="1" min="1" max="10" />
+                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+              </form> -->
+              <form action="{% url 'core:addToCart'%}" method="POST">
+              {% csrf_token %}
+              
+              <input type="button" value="-" class="decreaseVal">
+              <input type="number" id="quant{{product.id}}" min="1" max="10" value="1" class="quantityinput" name="quantity">
+              <input type="button" value="+" class="increaseVal">
+
+              <div class="footer-social-icons ">
+                <ul class="flex flex-wrap justify-content-center align-items-center">
+                  <li>
+                    <a href="{% url 'core:addToCart' %}">
+                      <button id = "{{product.id}}"type="submit" class="shop-now-btn card-link-btn">ADD TO CART</button>
+                    </a>
+                  </li>
+                </ul>
+              </div> 
+              </form>   
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      
+    </div>
+    
+    {{request.user.username}}
+  </div>
+  <div class="pagination">
+   {% if prevPage %}<a href="{% url 'core:buyer' prevPage %}">&laquo;</a>{% endif %}
+   {% for pageNo in totPages %}
+   <a {% if pageNo == pno %} class="active" {% endif %} href="{% url 'core:buyer' pageNo %}">{{pageNo}}</a>
+   {% endfor %}
+   {% if nextPage %}<a  href="{% url 'core:buyer' nextPage %}" >&raquo;</a>{% endif %}
+ </div>
+
+ {% endblock %}
+ {% block javascript %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script type="text/javascript">
+function confirmDelete(){
+    var result = confirm("Sure you want to delete Buyer?");
+    if (result) {
+        window.location.href = "{% url 'core:buyerdelete' %}";
+}
+  }
+// var input_el = $('#quant');
+
+$(".decreaseVal").click(function() {
+  var input_el = $(this).next('input')
+  var v= input_el.val()-1;
+  if(v>=input_el.attr('min'))
+    input_el.val(v)
+});
+
+
+$(".increaseVal").click(function() {
+  var input_el = $(this).prev('input')
+  var v= input_el.val()*1+1;
+  if(v<=input_el.attr('max'))
+    input_el.val(v)
+});
+
+$(".shop-now-btn").click(function(event){
+        event.preventDefault();
+        var idEl = parseInt($(this).attr('id'));
+        // var input_el = $(this).prev('input')
+        console.log("dasd", idEl)
+        var post_url = "{% url 'core:addToCart'%}";
+        var quantity = parseInt($("#quant"+idEl).val());
+        $.ajax({
+          url: post_url,
+          method: "POST",
+          data: {
+            id : idEl,
+            quantity: quantity,
+            csrfmiddlewaretoken : csrftoken
+          },
+          success: function(data){
+            // location.reload(true)
+            console.log("Up",data);
+             $(".alert-success").css("display","block");
+
+            $(".alert-success").html("Your item has been added to your cart");
+            // $('html').html(data)
+
+          },
+          error: function(error){
+            console.log(error);
+          },
+        })
+      });
+
+</script>
+
+{% endblock %}

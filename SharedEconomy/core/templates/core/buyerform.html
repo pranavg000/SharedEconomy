@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Buyer {% endblock %}
+{% block content %}
+	<form class="form-horizontal" action ="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+
+	 <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Create Buyer</legend>
+                {{ form|crispy }}
+            </fieldset>
+	<div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+</form>
+{% endblock content %}
+

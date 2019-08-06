@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <title>Shared Economy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="{% static 'core/css/mystyle.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'core/slick/slick.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'core/slick/slick-theme.css' %}" rel="stylesheet" type="text/css">
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'core/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/team_style.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="{% url 'core:home' %}">Shared Economy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{% url 'core:home' %}">Home</a>
+            <a class="nav-item nav-link" href="">About</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'core:wishlist' %}">Wishlist</a>
+            <a class="nav-item nav-link" href="{% url 'core:cart' %}">Cart
+              <i class="fa fa-shopping-cart"></i>
+            </a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <div class="container-fluid" id="first">
+
+    <div class="bannerContainer" id="join">
+      <center>
+        <h1 class="bannertext">"It's a smile, it's a kiss, it's a sip of wine ... <br>It's summertime!" </h1>
+        <a href="#choose-your-set" class="cr-button prodButton">SHOP NOW</a>
+      </center>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="mentee">
+  <div class="row">
+
+    <div class="col-sm-8 mentee">
+      <h2><strong>Lorem ipsum lorem ipsum lorem ipsum</strong></h2><br>
+      <p>Want to try exotic branded wine from UK and US but can’t travel abroad for some reason? Do heavy import duties refrain you from indulging your exquisite taste?</p> <br>
+      <p>Worry no more, for Shared Economy brings you the opportunity to alleviate your disappointments at nominal extra charges using a network of airline travelers. Buy your preferred wine of choice and it will be delivered to you within 10 days.</p><br><br>
+      <a href="{% url 'core:buyer' %}">
+      <button class="btn btn-default btn-lg">Become a Buyer</button>
+    </a>
+    </div>
+    <div class="col-sm-4 art">
+      <img class="img-responsive" src="{% static 'core/images/shop.jpg' %}">
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container-fluid" id="mentor">
+  <div class="row">
+    <div class="col-sm-4 art">
+      <img class="img-responsive" src="{% static 'core/images/airline.jpg' %}">
+    </div>
+    <div class="col-sm-8 mentor">
+      <h2>Lorem ipsum oder</h2>
+      <br><br>
+      <p> Ever wished that you carried more luggage while travelling to make up the deficit between your luggage and the limit? Maybe not. Would your answer be the same if given the opportunity to help fellow men realise their dreams of tasting exquisite foreign brand of wine while also earning commission at absolutely no extra trouble of your own?</p> <br>
+      <p>Shared Economy brings to you the chance to help others by delivering wine when travelling by air, while earning money. Enter your flight plan and wait for customers in need. </p><br><br><br>
+      <a href="{% url 'core:traveller' %}">
+      <button class="btn btn-default btn-lg">Become a Traveller</button>
+    </a>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container-fluid">
+  <br />
+
+
+
+  <div class="panel-group" id="accordion">
+    <div class="faqHeader">FAQs</div>
+    <br><br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Who can be a mentor?</a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse ">
+        <div class="panel-body">
+          Regardless of if you’re a student, professional or an AI which has passed the turing-test, if you’ve walked a certain path… there’s a good chance that someone else out there is walking the same (approximate) path, and they could sure use some help! Which is why being a mentor is open to everyone.
+
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">What kind of commitment does this require?</a>
+        </h4>
+      </div>
+      <div id="collapseTen" class="panel-collapse collapse">
+        <div class="panel-body">
+         We all have busy lives, that’s why we want the mentoring process to be as flexible as possible. Whether it’s a quick 15-min call, an in-depth portfolio review or a catch-up email with a mentee after a long time, it’s what works best for you.
+       </div>
+     </div>
+   </div>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">What if I don’t want to get on a video call?</a>
+      </h4>
+    </div>
+    <div id="collapseEleven" class="panel-collapse collapse">
+      <div class="panel-body">
+        We highly recommend using a video call to talk to each other for the first time. We’ve noticed that it helps build a bond. You can together discuss a different mode of communication that works for both of you on this call.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">How do I stay in touch with a mentee/mentor?</a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        We see this happening in 2 ways - you could have your first call with your mentee/mentor and decide on a path forward together through regularly scheduled calls. Or you could reach out to each other as and when you want to - to catch up or otherwise.
+        Of course, not all mentor/mentee relationships need to last long. Sometimes it’s okay to just talk once if there’s no need for continuity.
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">What does this cost?</a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        Just a small fee of some enthusiasm from you and sticking to our code of conduct.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">What if I don’t like my mentor/mentee?</a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+        Even though our vision is to make each connection work out… Due to the nature of human relationships, that’s a hard thing to get right. If for some reason you don’t want to get matched with a certain mentor/mentee again you can let us know at cmdplusj@gmail.com or through the feedback email that we’ll send you after every call (unless you want to opt out of it).
+        Depending on the reason we can take a number of steps from anonymous feedback to mentor/mentee to making sure you can’t match with the same person on the platform again.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> What if I didn’t find a mentor in the same field as me?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse">
+      <div class="panel-body">
+        Despite a mismatch in hard skills or career trajectory, a mentee can still learn a lot from a mentor. Sometimes what complements your hard skills and fills in the gaps can be just as—if not more—important to your long-term success.
+      We encourage all mentees to read between the lines while reading the bios of mentors for the same reason! Sometimes, you find common ground in similar experiences.                      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div> -->
+
+
+<div class="container-fluid" id="about">
+  <h2><strong>About Us</strong></h2><br><br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="{% static 'core/slick/slick.min.js'%}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  $(document).on('ready', function() {
+
+    $(".regular").slick({
+      dots: true,
+      infinite: true,
+      slidesToShow: 2 })
+  })
+</script>
+</body>
+</html>

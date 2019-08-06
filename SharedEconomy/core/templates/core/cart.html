@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+<div class="homepage-info-section intro">
+    <div class="container">
+
+      {%if messages%}
+      {%for message in messages%}
+      <div class="alert alert-{{ message.tags }}">
+          {{message}}
+      </div>
+      {%endfor%}
+      {%endif%}
+      <a class="btn btn-primary checkout" href="{% url 'core:checkout'%}">Checkout</a>
+      <div class="team-heading">
+        <h3>YOUR CART</h3>
+    </div>
+
+    <div class="row">
+        {% for pb in products %}
+        <div class="col-xl-3 col-md-6 col-sm-12 d-flex align-items-stretch hell">
+
+            <div class="card card-team">
+                <div class="card-content-team">
+                        <button class="deleteCart" id="{{pb.id}}"><i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-placement="right" data-html="true" title="Remove from cart"></i></button>
+                    <div class="card-img-div">
+                        <img class="card-img-top" src="{{pb.product.imageUrl}}" alt="Card image" style="width:100%">
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class=""><h4 class="card-title">{{pb.product.name}}</h4></a>
+                      <h4 class="card-subtitle">{{pb.product.location.name}}</h4>
+                      <p class="card-text">&#x20B9;{{pb.product.price}}<br></p>
+              <form action="{% url 'core:buyProd' pb.product.id%}" method="POST">
+              {% csrf_token %}
+              
+              <input type="button" id="{{pb.id}}" value="-" class="decreaseVal">
+              <input type="number" id="quant{{pb.id}}" min="1" max="10" value="{{pb.quantity}}" class="quantityinput" name="quantity">
+              <input type="button" id="{{pb.id}}" value="+" class="increaseVal">
+
+<!--               <div class="footer-social-icons ">
+                <ul class="flex flex-wrap justify-content-center align-items-center">
+                  <li>
+                    <a href="{% url 'core:buyProd' pb.product.id %}">
+                      <button type="submit" class="shop-now-btn card-link-btn">ADD TO CART</button>
+                    </a>
+                  </li>
+                </ul>
+              </div> 
+ -->              </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+<a class="btn btn-primary" href="javascript:history.back()">
+    Go back to Shopping
+</a>
+
+</div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+
+
+
+$(".deleteCart").click(function(event){
+        event.preventDefault();
+        var idEl = parseInt($(this).attr('id'));
+        // var origQuantity = parseInt($("#quant"+idEl).val());
+        console.log("dasd", idEl)
+        // $("#quant"+idEl).val(origQuantity+1)
+        // $(this).parent().parent().remove();
+        var post_url = '{% url "core:deletecart" %}';
+        
+        $.ajax({
+          url: post_url,
+          method: "POST",
+          data: {
+            id : idEl,
+            csrfmiddlewaretoken : csrftoken
+          },
+          success: function(data){
+            location.reload(true)
+            // console.log("Up",data);
+            // $('html').html(data)
+
+          },
+          error: function(error){
+            console.log(error);
+          },
+        })
+      });
+
+$(".increaseVal").click(function(event){
+        event.preventDefault();
+        var idEl = parseInt($(this).attr('id'));
+        var origQuantity = parseInt($("#quant"+idEl).val());
+        console.log("dasd", origQuantity)
+        $("#quant"+idEl).val(origQuantity+1)
+        var post_url = '{% url "core:cartquantity" %}';
+        
+        $.ajax({
+          url: post_url,
+          method: "POST",
+          data: {
+            id : idEl,
+            q : 1,
+            csrfmiddlewaretoken : csrftoken
+          },
+          success: function(data){
+            
+             console.log("Up",$("#quant"+idEl).val());
+
+          },
+          error: function(error){
+            console.log(error);
+          },
+        })
+      });
+
+
+ $(".decreaseVal").click(function(event){
+        event.preventDefault();
+        var idEl = parseInt($(this).attr('id'));
+        var origQuantity = parseInt($("#quant"+idEl).val());
+
+        if(origQuantity>1)
+        {var post_url = '{% url "core:cartquantity" %}';
+        $("#quant"+idEl).val(origQuantity-1);
+
+        $.ajax({
+          url: post_url,
+          method: "POST",
+          data: {
+            id : idEl,
+            q : -1,
+            csrfmiddlewaretoken : csrftoken
+          },
+          success: function(data){
+            console.log("Down",$("#quant"+idEl).val());
+
+          },
+          error: function(error){
+            console.log(error);
+          },
+        })}
+      });
+
+</script>
+{% endblock %}

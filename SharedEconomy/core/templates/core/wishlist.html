@@ -1,0 +1,66 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Wishlist {% endblock %}
+
+        {% block content %}
+
+    <div class="homepage-info-section intro">
+    <div class="container">
+      {%if messages%}
+{%for message in messages%}
+<div class="alert alert-{{ message.tags }}">
+  {{message}}
+</div>
+{%endfor%}
+{%endif%}
+    <div class="team-heading not-first-heading">
+    <h3>YOUR WISHLIST</h3>
+</div>
+
+        <div class="row">
+            {% for pb in products %}
+            <div class="col-xl-3 col-md-6 col-sm-12 d-flex align-items-stretch hell">
+                
+                <div class="card card-team one">
+                    <div class="card-content-team">
+                    <div class="card-img-div">
+                    <img class="card-img-top" src="{{pb.product.imageUrl}}" alt="Card image" style="width:100%">
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class=""><h4 class="card-title">{{pb.product.name}}</h4></a>
+                      <h4 class="card-subtitle">{{pb.product.location}}</h4>
+                      <p class="card-text">&#x20B9;{{pb.product.price}}<br></p>
+                      <div class="footer-social-icons ">
+                    <ul class="flex flex-wrap justify-content-center align-items-center">
+                        <li>
+                            {% if pb.traveller %}
+                            <a href="#">
+                                <button class='positive-btn card-link-btn'>TRAVELLER ASSIGNED</button>
+                                
+                            </a>
+                            {% else %}
+                            <a href="#">
+                                <button class='negetive-btn card-link-btn'>TRAVELLER YET TO BE ASSIGNED</button>
+                            </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>     
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <a class="btn btn-primary" href="javascript:history.back()">
+            Go back
+          </a>
+    </div>
+{% endblock %}
+    {% block javascript %}
+     
+   
+
+  {% endblock %}

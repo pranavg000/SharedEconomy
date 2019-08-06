@@ -1,0 +1,357 @@
+
+.container-fluid {
+	padding: 120px 120px;
+}
+#mentor {
+	background-color: #4752E8;
+}
+
+.mentee h2 {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+}
+
+.mentee p {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.logo {
+	font-size: 200px;
+}
+@media screen and (max-width: 768px) {
+	.col-sm-4 {
+		text-align: center;
+		margin: 25px 0;
+	}
+}
+#mentee {
+	background-color: #FDB748;
+}
+.mentor {
+	color: #FFFFFF;
+}
+.mentor h2{
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+
+	/* Primary */
+
+	color: #FDB748;
+}
+
+.mentor p {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.mentor .btn {
+	background-color: #FDB748;
+	color: #FFFFFF;
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.26);
+	border-radius: 6px;
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 35px;
+}
+.mentee .btn {
+	background: #4752E8;
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.26);
+	border-radius: 6px;
+	color: #FFFFFF;
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 35px;
+}
+#about {
+	background-color: #ED4924;
+	color: #FFFFFF;
+}
+
+#about h2 {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+}
+
+#about p {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+}
+.mentor a {
+	color: #FFFFFF;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+}
+#connect {
+	background-color: #313131;
+	color: #FFFFFF;
+}
+#connect a {
+	color: #FFFFFF;
+	opacity: 0.7;
+}
+#connect p {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 26px;
+}
+#connect h2 {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 45px;
+	line-height: 53px;
+}
+.faqHeader {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+}
+
+.panel-heading [data-toggle="collapse"]:after {
+	font-family: 'Glyphicons Halflings';
+	content: "\e072"; /* "play" icon */
+	float: right;
+	color: #F58723;
+	font-size: 18px;
+	line-height: 22px;
+	/* rotate "play" icon from > (right arrow) to down arrow */
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+	/* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	color: #454444;
+}
+
+#accordion a {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 26px;
+	/* identical to box height, or 124% */
+
+
+	/* Blue #2 */
+
+	color:  #4752E8;
+}
+
+#first {
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images8.alphacoders.com/291/291465.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+#intro p {
+
+
+	font-family: 'Rubik', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 35px;
+	/* identical to box height, or 219% */
+
+
+	color: #5C5C5C;
+
+
+}
+
+#intro h1 {
+	/* Meet your personal & professional goals */
+
+
+
+	/* h1 mentorship */
+
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+
+	color: #FFFFFF;
+}
+
+#intro h3 {
+	/* We’re trying to connect designers from across India with enthusiastic mentors to support them through their careers. Did we mention it’s not just UX? Yeah that’s right, industrial design, animation, typography. You name it, we’ve got it. */
+
+
+	/* body */
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+	/* or 162% */
+
+
+	color: #FFFFFF;
+}
+
+#intro h2 {
+	/* Join the community as a Mentee or a Mentor */
+
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 26px;
+	/* identical to box height, or 130% */
+
+
+	color: #FFFFFF;
+}
+
+.img-responsive {
+	width: 100%;
+}
+
+#carousel p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 21px;
+
+}
+#carousel h2{
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 25px;
+	line-height: 30px;
+}
+#carousel .btn{
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 35px;
+	background-color:  #FDB748;
+	border-radius: 6px;
+	color:#FFFFFF;
+	float: right;
+}
+#carousel h1 {
+	font-family: Rubik;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 35px;
+	line-height: 41px;
+}
+#carousel h3 {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 26px;
+}
+.navbar{
+  background-color: #FFFFFF;
+}
+.navbar-header a {
+  font-family: Rubik;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 35px;
+/* identical to box height, or 219% */
+
+
+color: #5C5C5C;
+}
+.navbar-nav a{
+  font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 35px;
+/* identical to box height, or 219% */
+
+
+color: #404040;
+}
+
+.bannerContainer {
+    margin: 0 -50% 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#first .bannertext {
+    width: 75%;
+    padding-bottom: 20px;
+    font-size: 48px;
+    line-height: 64px;
+    color: #f8f9f9;
+    font-weight: 700;
+    font-family: brandon-grotesque, sans-serif;
+    text-align: center;
+    color: #FFF;
+    transform: rotate(0deg);
+    margin: 30px auto 0;
+    letter-spacing: 6px;
+        max-width: 1200px;
+}
+
+.cr-button {
+    background: #71cc98;
+    margin: 60px auto 20px;
+        padding: 16px;
+    font-size: 18px;
+    display: block;
+    max-width: 250px;
+    opacity: 1;
+    transition: opacity .5s,background .5s;
+    line-height: normal;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    font-family: Open Sans;
+}

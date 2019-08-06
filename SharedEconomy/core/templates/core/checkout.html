@@ -1,0 +1,147 @@
+{% load tags %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="{% static 'core/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/checkout.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  
+  <script rel="text/javascript" src="{% static 'core/scripts/jquery-3.2.1.min.js' %}"></script>
+</head>
+<body>
+  <div class="container-fluid background">
+    <div class="row padding-top-20">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 offset-md-1 offset-lg-1 offset-xl-2 padding-horizontal-40">
+            <div class="row">
+                <div class="col-12 main-wrapper">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div id="template" class="row panel-wrapper">
+                                <div class="col-12 panel-header basket-header">
+                                    <div class="row">
+                                        <div class="col-6 basket-title">
+                                            <span class="description">Review your</span><br><span class="emphasized">Cart Summary</span>
+                                        </div>
+                                        <div class="col-6 order-number align-right">
+                                            <span class="description">Order {{products.0.id}}</span><br><span class="emphasized"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row column-titles padding-top-10">
+                                        <div class="col-2 align-center"><span>Photo</span></div>
+                                        <div class="col-4 align-left"><span>Name</span></div>
+                                        <div class="col-3 align-right"><span>Quantity</span></div>
+                                        <div class="col-3 align-right"><span>Price</span></div>
+                                    </div>                                    
+                                </div>
+                                
+                                <div class="col-12 panel-body basket-body">
+                                 {% for pb in products %}
+                                 <div class="row product">
+                                    <div class="col-2 product-image"><img src="{{pb.product.imageUrl}}"></div>
+                                    <div class="col-4">{{pb.product.name}}</div>
+                                    <div class="col-3 align-right"><span class="sub">{{pb.product.price}}</span> &#215; {{pb.quantity}}</div>
+                                    <div class="col-3 align-right pricing"><!-- <span class="sub">Rs.</span> -->{% multiply pb.product.price pb.quantity %}</div>
+                                </div>
+                                {%endfor%}
+                            </div>
+
+                                <div class="col-12 panel-footer basket-footer">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-8 align-right description"><div class="dive">Subtotal</div></div>
+                                        <div class="col-4 align-right"><span class="emphasized" id="subtotal"></span></div>
+                                        <div class="col-8 align-right description"><div class="dive">Transportation Cost(10%)</div></div>
+                                        <div class="col-4 align-right"><span class="emphasized" id="transcost"></span></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-8 align-right description"><div class="dive">Total</div></div>
+                                        <div class="col-4 align-right"><span class="very emphasized" id="totcost"></span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row panel-wrapper">
+
+
+                                <div class="col-12 panel-footer creditcard-footer">
+                                    <div class="row">
+                                        <div class="col-12 align-center"><button class="cancel">Cancel</button>&nbsp; &emsp; &emsp; &emsp; &emsp;<button class="confirm">Confirm & Pay</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var x = document.getElementsByClassName("pricing");
+    var sum=0.0;
+    for(var i in x) { 
+        if(!isNaN(x[i].innerText)) 
+            sum+=parseFloat(x[i].innerText);}
+        tcost=0.1*sum;
+        document.getElementById("subtotal").innerText="Rs. "+sum;
+        document.getElementById("transcost").innerText="Rs. "+tcost;
+        document.getElementById("totcost").innerText="Rs. "+(sum+tcost);
+    </script>
+    <!--     // console.log(sum) -->
+    <script type="text/javascript">
+//     $( document ).ready ( function ()
+// {
+//     console.log ( 'ready!' );
+//     $('[data-toggle="tooltip"]').tooltip();
+//     var template = $( '#template' ).html ();
+//     Mustache.parse ( template );
+//     var rendered = Mustache.render ( template, get_basket () );
+//     $( '#template' ).html ( rendered );
+//     if ( $('.basket-body').hasScrollBar () )
+//     {
+//         $('.column-titles').addClass('fix-overflow');
+//         $('.basket-body').niceScroll({autohidemode: false,cursorcolor:"#ffffff",cursorborder:"1px solid #D0D0D0",cursorborderradius: "0",background: "#ffffff"});
+//     }
+//     else
+//     {
+//         $('.column-titles').removeClass('fix-overflow');
+//     }
+
+//     $('.card-expiration').datepicker({
+//     format: "mm/yyyy",
+//     startView: "months", 
+//     minViewMode: "months"        
+// });
+// });
+
+
+//https://stackoverflow.com/questions/4814398/how-can-i-check-if-a-scrollbar-is-visible
+(function($) {
+    $.fn.hasScrollBar = function() {
+        return this.get(0).scrollHeight > this.height();
+    }
+})(jQuery);
+
+
+  //for(var i in x) { total += x[i]; }
+</script>
+</body>
+</html>
