@@ -25,7 +25,7 @@
               <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image" style="width:100%">
             </div>
             <div class="card-body">
-              <a href="#" class=""><h4 class="card-title">{{product.name}}</h4></a>
+              <h4 class="card-title">{{product.name}}</h4>
               <h4 class="card-subtitle">{{product.location.name}}</h4>
               <p class="card-text">&#x20B9;{{product.price}}<br></p>
 <!--               <form>
@@ -59,7 +59,6 @@
       
     </div>
     
-    {{request.user.username}}
   </div>
   <div class="pagination">
    {% if prevPage %}<a href="{% url 'core:buyer' prevPage %}">&laquo;</a>{% endif %}
@@ -114,10 +113,12 @@ $(".shop-now-btn").click(function(event){
           success: function(data){
             // location.reload(true)
             console.log("Up",data);
-             $(".alert-success").css("display","block");
+            $(".alert-success").css("display","block");
 
             $(".alert-success").html("Your item has been added to your cart");
             // $('html').html(data)
+            //window.scrollTo(0,0);
+            alert("Your item has been added to your cart")
 
           },
           error: function(error){

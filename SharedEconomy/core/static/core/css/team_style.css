@@ -2540,7 +2540,10 @@ align-items: center; }
 }
 
 .card-team{
-    background-color: rgba(16, 26, 65, 0.17);
+    
+    background-color: #61778C50;
+    /*background-color: rgba(16, 26, 65, 0.17);*/
+
     border-radius: 8px;
     border-width: 0px;
 }
@@ -2593,6 +2596,9 @@ align-items: center; }
 }
 
 
+button {
+    cursor: pointer;
+}
 
 
 
@@ -2662,9 +2668,7 @@ align-items: center; }
 
 }
 
-a:hover{
-    text-decoration: none;
-}
+
 
 .team-heading h3 {
     font-size: 40px;
@@ -2726,7 +2730,7 @@ a:hover{
   padding: 5px 16px;
   text-align: center;
   text-decoration: none;
-  border-style: solid;
+  border: none;
   display: inline-block;
   font-size: 16px; 
 }
@@ -2795,3 +2799,17 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #FFFF33;
     color: #FFFFFF;
 }
+
+body {
+    background-color: #f0f5f5;
+}
+/*
+.card-link-btn:focus,.card-link-btn:active {
+   outline: none !important;
+   box-shadow: none;
+}*/
+
+.card-link-btn {
+    margin-top: 10px; 
+}
+
